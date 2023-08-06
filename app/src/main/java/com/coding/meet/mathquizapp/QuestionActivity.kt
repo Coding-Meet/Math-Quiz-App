@@ -17,6 +17,7 @@ import com.coding.meet.mathquizapp.databinding.ActivityQuestionBinding
 import com.coding.meet.mathquizapp.models.QuestionItem
 import com.coding.meet.mathquizapp.models.QuestionSplit
 import com.coding.meet.mathquizapp.util.CustomCountdownTimer
+import com.coding.meet.mathquizapp.util.SecurityManger
 import com.coding.meet.mathquizapp.util.SharedPreferenceManger
 import com.coding.meet.mathquizapp.util.loadJsonFromAssets
 import com.coding.meet.mathquizapp.util.setupDialog
@@ -83,7 +84,11 @@ class QuestionActivity : AppCompatActivity() {
         }
 
         level = intent.getIntExtra("level",0)
-        val jsonStr = loadJsonFromAssets("question.json")
+//        val jsonStr = loadJsonFromAssets("question.json")
+        val securityManager = SecurityManger(this)
+        val jsonStr = securityManager.decryptFile(
+            "encryptedQuestion.json"
+        )
         Log.d("jsonStr",jsonStr)
 
         // Manually json to Data class convert

@@ -15,6 +15,11 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String","KEYPASSWORD",KEYPASSWORD)
+        buildConfigField("String","IVPASSWORD",IVPASSWORD)
+        buildConfigField("String","ALGORITHM",ALGORITHM)
+        buildConfigField("String","TRANSFORMATION",TRANSFORMATION)
     }
 
     buildTypes {
@@ -32,6 +37,7 @@ android {
     }
     buildFeatures{
         viewBinding true
+        buildConfig = true
     }
 }
 
