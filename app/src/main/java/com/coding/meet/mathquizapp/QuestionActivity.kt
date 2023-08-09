@@ -19,8 +19,10 @@ import com.coding.meet.mathquizapp.models.QuestionSplit
 import com.coding.meet.mathquizapp.util.CustomCountdownTimer
 import com.coding.meet.mathquizapp.util.SecurityManger
 import com.coding.meet.mathquizapp.util.SharedPreferenceManger
+import com.coding.meet.mathquizapp.util.invisible
 import com.coding.meet.mathquizapp.util.loadJsonFromAssets
 import com.coding.meet.mathquizapp.util.setupDialog
+import com.coding.meet.mathquizapp.util.visible
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -137,6 +139,61 @@ class QuestionActivity : AppCompatActivity() {
         questionBinding.secondOptionBtn.setOnClickListener { setAnswerTxt(it) }
         questionBinding.thirdOptionBtn.setOnClickListener { setAnswerTxt(it) }
         questionBinding.fourthOptionBtn.setOnClickListener { setAnswerTxt(it) }
+
+        questionBinding.twoOptionRemoveBtn.setOnClickListener {
+            when {
+                correctAnswerStr.equals(questionBinding.firstOptionBtn.text.toString(),true)->{
+                    optionHide(
+                        questionBinding.secondOptionBtn,
+                        questionBinding.thirdOptionBtn,
+                        questionBinding.fourthOptionBtn,
+                    )
+                }
+                correctAnswerStr.equals(questionBinding.secondOptionBtn.text.toString(),true)->{
+                    optionHide(
+                        questionBinding.firstOptionBtn,
+                        questionBinding.thirdOptionBtn,
+                        questionBinding.fourthOptionBtn
+                    )
+                }
+                correctAnswerStr.equals(questionBinding.thirdOptionBtn.text.toString(),true)->{
+                    optionHide(
+                        questionBinding.secondOptionBtn,
+                        questionBinding.fourthOptionBtn,
+                        questionBinding.firstOptionBtn,
+                    )
+                }
+                correctAnswerStr.equals(questionBinding.fourthOptionBtn.text.toString(),true)->{
+                    optionHide(
+                        questionBinding.firstOptionBtn,
+                        questionBinding.secondOptionBtn,
+                        questionBinding.thirdOptionBtn
+                    )
+                }
+            }
+            questionBinding.twoOptionRemoveBtn.isEnabled = false
+        }
+    }
+
+    private fun optionHide(
+        option1:Button,
+        option2:Button,
+        option3:Button
+    ){
+        when((1..3).random()){
+            1 -> {
+                option1.invisible()
+                option2.invisible()
+            }
+            2 -> {
+                option2.invisible()
+                option3.invisible()
+            }
+            else -> {
+                option1.invisible()
+                option3.invisible()
+            }
+        }
     }
 
     private var mLastClickTime : Long = 0
@@ -236,12 +293,17 @@ class QuestionActivity : AppCompatActivity() {
         questionBinding.thirdOptionBtn.setBackgroundColor(Color.WHITE)
         questionBinding.fourthOptionBtn.setBackgroundColor(Color.WHITE)
 
+        questionBinding.firstOptionBtn.visible()
+        questionBinding.secondOptionBtn.visible()
+        questionBinding.thirdOptionBtn.visible()
+        questionBinding.fourthOptionBtn.visible()
+
         questionBinding.firstOptionBtn.text = optionsList[0]
         questionBinding.secondOptionBtn.text = optionsList[1]
         questionBinding.thirdOptionBtn.text = optionsList[2]
         questionBinding.fourthOptionBtn.text = optionsList[3]
 
-
+        questionBinding.twoOptionRemoveBtn.isEnabled = true
 
     }
 
@@ -260,7 +322,7 @@ class QuestionActivity : AppCompatActivity() {
         nextResumeOrRestartBtn.text = "Resume"
         gameScoreNextRoundDialog.show()
     }
-    
+
     private fun gameScoreNextRoundShow(){
         gameOverMusic.start()
         questionTimer.destroyTimer()

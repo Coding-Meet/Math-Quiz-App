@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     tools:context=".QuestionActivity">
 
     <include
@@ -13,9 +14,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/twoOptionRemoveBtn"
         android:layout_below="@id/toolbarLayout"
         android:layout_centerInParent="true"
-        android:background="@color/backgroundColor"
         android:orientation="vertical"
         android:weightSum="3">
 
@@ -156,6 +157,7 @@
                             android:layout_weight="1"
                             android:text="15" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -189,5 +191,15 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/twoOptionRemoveBtn"
+        style="@style/Widget.App.Button.Outline"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Two Option Remove" />
 
 </RelativeLayout>
