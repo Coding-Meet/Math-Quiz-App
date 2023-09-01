@@ -16,10 +16,10 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String","KEYPASSWORD",KEYPASSWORD)
-        buildConfigField("String","IVPASSWORD",IVPASSWORD)
-        buildConfigField("String","ALGORITHM",ALGORITHM)
-        buildConfigField("String","TRANSFORMATION",TRANSFORMATION)
+//        buildConfigField("String","KEYPASSWORD",KEYPASSWORD)
+//        buildConfigField("String","IVPASSWORD",IVPASSWORD)
+//        buildConfigField("String","ALGORITHM",ALGORITHM)
+//        buildConfigField("String","TRANSFORMATION",TRANSFORMATION)
     }
 
     buildTypes {
@@ -37,7 +37,13 @@ android {
     }
     buildFeatures{
         viewBinding true
-        buildConfig = true
+//        buildConfig = true
+    }
+
+    externalNativeBuild {
+        cmake{
+            path "src/main/cpp/CMakeLists.txt"
+        }
     }
 }
 
@@ -51,6 +57,7 @@ dependencies {
     implementation 'com.scwang.wave:MultiWaveHeader:1.0.0-andx'
 
     implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'com.cossacklabs.com:themis:0.13.1'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
