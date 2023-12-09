@@ -66,8 +66,13 @@ Make sure to follow the videos in order for a seamless learning experience. Each
 - Follow along with the video tutorials.
 - For videos involving encryption, find the relevant code and explanations in the corresponding folders.
 
-## Support
 
-If you encounter any issues or have questions, feel free to open an issue in this repository.
+## Support the Project
+
+If you find this tutorial series helpful and would like to support the development of more content, consider buying me a coffee! Your support helps in creating high-quality tutorials.
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-Donate-orange?style=for-the-badge&logo=buy-me-a-coffee)](https://www.buymeacoffee.com/codingmeet)
+
+Your generosity is greatly appreciated! Thank you for supporting this project.
 
 Happy coding!
